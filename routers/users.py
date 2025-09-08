@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-app = FastAPI()
+router = APIRouter(tags=["Users"]) # Etiqueta para la documentación
 
 # Entidad User
 class User(BaseModel):
@@ -17,20 +17,20 @@ users_list = [User(id=1, name="A", surname="AA", url="https://a.dev", age=30),
               User(id=3, name="C", surname="CC", url="https://c.dev", age=33)]
 
 ###  CRUD  ####
-@app.get("/users")
+@router.get("/users")
 async def get_users():
     if not users_list:
         raise HTTPException(status_code=404, detail="No hay usuarios en la BD.")
     return users_list
 
-@app.get("/user/{id}")
+@router.get("/user/{id}")
 async def get_user(id: int):
     user = search_user(id)
     if not user:
         raise HTTPException(status_code=404, detail=f"Usuario {id} no encontrado.")
     return user
 
-@app.post("/user/", status_code=201)
+@router.post("/user/", status_code=201)
 async def add_user(user: User):
     # Comprobar si ya hay un usuario en la lista
     if type(search_user(user.id)) == User: # Si devuelve un usuario con el mismo id
@@ -38,7 +38,7 @@ async def add_user(user: User):
     users_list.append(user)
     return {"success": f"Usuario {user.id} añadido correctamente."}
 
-@app.put("/user/")
+@router.put("/user/")
 async def update_user(user: User):
     for index, new_user in enumerate(users_list):
         if new_user.id == user.id:
@@ -46,7 +46,7 @@ async def update_user(user: User):
             return {"success": f"Usuario {user.id} actualizado correctamente."}
     raise HTTPException(status_code=404, detail=f"Usuario {user.id} no existe en BD.")
 
-@app.delete("/user/{id}")
+@router.delete("/user/{id}")
 async def delete_user(id: int):
     for index, new_user in enumerate(users_list):
         if new_user.id == id:
