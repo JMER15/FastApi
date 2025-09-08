@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -19,17 +19,22 @@ users_list = [User(id=1, name="A", surname="AA", url="https://a.dev", age=30),
 ###  CRUD  ####
 @app.get("/users")
 async def get_users():
+    if not users_list:
+        raise HTTPException(status_code=404, detail="No hay usuarios en la BD.")
     return users_list
 
 @app.get("/user/{id}")
 async def get_user(id: int):
-    return search_user(id)
-    
-@app.post("/user/")
+    user = search_user(id)
+    if not user:
+        raise HTTPException(status_code=404, detail=f"Usuario {id} no encontrado.")
+    return user
+
+@app.post("/user/", status_code=201)
 async def add_user(user: User):
     # Comprobar si ya hay un usuario en la lista
     if type(search_user(user.id)) == User: # Si devuelve un usuario con el mismo id
-        return {"error": "Usuario ya está añadido en la BD."}
+        raise HTTPException(status_code=409, detail="Usuario ya está añadido en la BD.") # 409 Conflict
     users_list.append(user)
     return {"success": f"Usuario {user.id} añadido correctamente."}
 
@@ -39,7 +44,7 @@ async def update_user(user: User):
         if new_user.id == user.id:
             users_list[index] = user
             return {"success": f"Usuario {user.id} actualizado correctamente."}
-    return {"error": "Usuario no existe en BD."}
+    raise HTTPException(status_code=404, detail=f"Usuario {user.id} no existe en BD.")
 
 @app.delete("/user/{id}")
 async def delete_user(id: int):
@@ -47,11 +52,12 @@ async def delete_user(id: int):
         if new_user.id == id:
             del users_list[index]
             return {"success": f"Usuario {id} borrado correctamente."}
-    return {"error": "Usuario no existe en BD."}
- 
+    raise HTTPException(status_code=404, detail=f"Usuario {id} no existe en BD.")
+
+# Función para buscar usuario por id 
 def search_user(id: int):
     users = filter(lambda user: user.id == id, users_list)
     try:
         return list(users)[0]
     except:
-        return {"error": "Usuario no encontrado."}
+        return None
