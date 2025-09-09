@@ -54,5 +54,22 @@ Una vez que el servidor esté en funcionamiento, puedes acceder a la documentaci
   
 - Documentación con **Redocly** -> http://127.0.0.1:8000/redoc
 
-postman
+### Probar la API
+
+Puedes probar la API utilizando herramientas como **Postman**, **Thunder Client**.
+
+### Autenticación y Autorización
+
+FastAPI proporciona soporte integrado para la autenticación y autorización. Puedes utilizar OAuth2, JWT, o cualquier otro método de autenticación que prefieras. Consulta la [documentación oficial](https://fastapi.tiangolo.com/tutorial/security/) para más detalles.
+
+Para instalar los paquetes para poder usar la autenticación JWT
+
+```bash
+pip install pyjwt
+pip install "passlib[bcrypt]"
+```
+
+Bcrypt es un algoritmo de hashing seguro que se utiliza comúnmente para proteger contraseñas. La biblioteca `passlib` proporciona una implementación fácil de usar de bcrypt y otros algoritmos de hashing.
+
+
 
