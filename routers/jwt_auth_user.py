@@ -68,7 +68,7 @@ async def current_user(user: User = Depends(auth_user)):
                             detail="Usuario inactivo.") 
     return user
 
-@router.post("/login")
+@router.post("/login_jwt")
 async def login(form: OAuth2PasswordRequestForm = Depends()):
     user_db = users_db.get(form.username)
     if not user_db:
@@ -87,6 +87,6 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 
     return {"access_token": jwt.encode(access_token, SECRET, algorithm=ALGORITHM_ENCODING), "token_type": "bearer"}
 
-@router.get("/users/me")
+@router.get("/users/me_jwt")
 async def me(user: User = Depends(current_user)):
     return user
