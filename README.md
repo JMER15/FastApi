@@ -1,10 +1,23 @@
 ## Instalación de FastAPI con Uvicorn
 
-FastAPI es un framework web moderno y rápido para construir APIs con **Python 3.7+** basado en las **anotaciones** de tipos estándar de Python. Uvicorn es un servidor ASGI ligero y rápido que se utiliza comúnmente para ejecutar aplicaciones FastAPI.
+FastAPI es un framework web moderno y rápido para construir APIs con **Python 3.7+** basado en las **anotaciones** de tipos de Python. Uvicorn es un servidor ASGI ligero y rápido que se utiliza comúnmente para ejecutar aplicaciones FastAPI.
+
+Las principales **características** de FastAPI son:
+
+- Basado en **estándares** abiertos como OpenAPI y JSON Schema, y estándares de autenticación como OAuth2 y JWT.
+  
+- **Alto rendimiento**, comparable a NodeJS y Go (gracias a Starlette y Pydantic).
+  
+- **Rápido** de desarrollar, **con menos código y menos errores**.
+  
+- Soporte automático para **validación de datos**, serialización y **documentación interactiva**.
+  
+- **Fácil e intuitivo**, con una curva de aprendizaje suave.
 
 ### Requisitos previos
 
 Antes de comenzar, asegúrate de tener **Python 3.7 o superior** instalado en tu sistema. También es recomendable crear un entorno virtual para tu proyecto.
+
 Puedes crear un entorno virtual usando `venv`:
 
 ```bash
@@ -44,7 +57,7 @@ sino usa:
 python -m uvicorn main:app --reload
 ```
 
-El parámetro `--reload` hace que el servidor se reinicie automáticamente cuando detecta cambios en el código, lo cual es útil durante el desarrollo.
+El parámetro `--reload` hace que el servidor se **reinicie automáticamente** cuando detecta cambios en el código, lo cual es útil durante el desarrollo.
 
 ### Documentación automática
 
