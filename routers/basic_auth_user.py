@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 router = APIRouter(tags=["Basic Auth User"])
-oauth2 = OAuth2PasswordBearer(tokenUrl="login")
+oauth2 = OAuth2PasswordBearer(tokenUrl="login") # Nombre de la ruta, debe estar creado con metodo post
 
 class User(BaseModel):
     username: str
@@ -36,7 +36,7 @@ def search_user(username: str):
     if username in users_db:
         return User(**users_db[username])
     
-def search_user_db(username: str):
+def search_user_db(username: str): 
     if username in users_db:
         return UserDB(**users_db[username])
     
