@@ -1,7 +1,8 @@
-# FastAPI + Uvicorn: Manual Paso a Paso
+# ⚡ FastAPI + Uvicorn: Manual Paso a Paso
 
-## Introducción
-FastAPI es un framework web moderno y rápido para construir APIs con **Python 3.7+** basado en las **anotaciones** de tipos de Python. Uvicorn es un servidor ASGI ligero y rápido que se utiliza comúnmente para ejecutar aplicaciones FastAPI.
+## 📖 Introducción
+
+`FastAPI` es un framework web moderno y rápido para construir APIs con **Python 3.7+** basado en las **anotaciones** de tipos de Python. `Uvicorn` es un servidor ASGI ligero y rápido que se utiliza comúnmente para ejecutar aplicaciones FastAPI.
 
 Las principales **características** de FastAPI son:
 
@@ -15,7 +16,7 @@ Las principales **características** de FastAPI son:
   
 - **Fácil e intuitivo**, con una curva de aprendizaje suave.
 
-## Requisitos previos
+## 🛠️ Requisitos previos
 
 Antes de comenzar, asegúrate de tener **Python 3.7 o superior** instalado en tu sistema. También es recomendable crear un entorno virtual para tu proyecto.
 
@@ -26,7 +27,7 @@ python -m venv env
 source env/bin/activate  # En Windows usa `env\Scripts\activate`
 ```
 
-## Instalación
+## 📦 Instalación
 
 Para instalar FastAPI y Uvicorn, puedes usar pip. Ejecuta el siguiente comando en tu terminal:
 
@@ -34,7 +35,7 @@ Para instalar FastAPI y Uvicorn, puedes usar pip. Ejecuta el siguiente comando e
 pip install "fastapi[all]" uvicorn
 ```
 
-## Verificación de la instalación
+## ✅ Verificación de la instalación
 
 Para verificar que FastAPI y Uvicorn se han instalado correctamente, puedes crear un archivo Python simple llamado `main.py` con el siguiente contenido:
 
@@ -60,7 +61,7 @@ python -m uvicorn main:app --reload
 
 El parámetro `--reload` hace que el servidor se **reinicie automáticamente** cuando detecta cambios en el código, lo cual es útil durante el desarrollo.
 
-## Documentación automática
+## 📚 Documentación automática
 
 Una vez que el servidor esté en funcionamiento, puedes acceder a la documentación automática generada por FastAPI en tu navegador web. Tenemos 2 tipos de documentación automática en `FastAPI`:
 
@@ -68,11 +69,11 @@ Una vez que el servidor esté en funcionamiento, puedes acceder a la documentaci
   
 - Documentación con **Redocly** -> http://127.0.0.1:8000/redoc
 
-## Probar la API
+## 🧪 Probar la API
 
 Puedes probar la API utilizando herramientas como **Postman**, **Thunder Client** (extensión de VSCode) o incluso desde la propia documentación interactiva de Swagger.
 
-## Autenticación y Autorización
+## 🔐 Autenticación y Autorización
 
 FastAPI proporciona soporte integrado para la autenticación y autorización. Puedes utilizar **OAuth2, JWT** (JSON Web Token), o cualquier otro método de autenticación que prefieras. Consulta la [documentación oficial](https://fastapi.tiangolo.com/tutorial/security/) para más detalles.
 
@@ -85,7 +86,7 @@ pip install "passlib[bcrypt]"
 
 **Bcrypt** es un algoritmo de hashing seguro que se utiliza comúnmente para proteger contraseñas. La biblioteca `passlib` proporciona una implementación fácil de usar de bcrypt y otros algoritmos de hashing.
 
-## Bases de datos
+## 🗄️ Bases de datos
 
 `FastAPI` se puede integrar fácilmente con varias bases de datos utilizando ORM como SQLAlchemy, Tortoise ORM, o bases de datos NoSQL como MongoDB.  
 
@@ -134,6 +135,10 @@ Por ejemplo:
 ```python
 DATABASE_URL = "mysql+pymysql://user:password@localhost/dbname"
 ```
+
+## Autor
+
+- [**José Miguel Escribano Ruiz**](https://github.com/JMER15)
 
 
 
