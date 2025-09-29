@@ -33,9 +33,13 @@ session_dep = Annotated[Session, Depends(get_session)]
 
 class DriverF1Base(SQLModel):
     name: str
+    nationality: str
+    pilot_number: int
     team: str
     podiums: int = Field(ge=0)  # Validación para que no sea negativo
     win: int = Field(ge=0)
+    total_races: int = Field(ge=0)
+    total_points: Optional[int] = Field(default=0, ge=0)
 
 class DriverF1(DriverF1Base, table = True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -81,9 +85,13 @@ def update_driver(driver_id: int, updated_driver: DriverF1, session: session_dep
     if not driver:
         raise HTTPException(status_code=404, detail="Piloto no encontrado.")
     driver.name = updated_driver.name
+    driver.nationality = updated_driver.nationality
+    driver.pilot_number = updated_driver.pilot_number
     driver.team = updated_driver.team
     driver.podiums = updated_driver.podiums
     driver.win = updated_driver.win
+    driver.total_races = updated_driver.total_races
+    driver.total_points = updated_driver.total_points
     session.add(driver)
     session.commit()
     session.refresh(driver)
