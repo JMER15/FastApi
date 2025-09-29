@@ -1,5 +1,21 @@
 # ⚡ FastAPI + Uvicorn: Manual Paso a Paso
 
+<div style="text-align:center">
+    <img style="width:600px" src="img/img1.png"></img>
+</div>
+
+## Contenido
+
+- **[Introducción](#introducción)**
+- **[Requisitos previos](#requisitos-previos)**
+- **[Instalación](#instalación)**
+- **[Verificación de la instalación](#verificación-de-la-instalación)**
+- **[Documentación automática](#documentación-automática)**
+- **[Probar la API](#probar-la-api)**
+- **[Autenticación y Autorización](#autenticación-y-autorización)**
+- **[Bases de datos](#bases-de-datos)**
+- **[Autor](#autor)**
+
 ## 📖 Introducción
 
 `FastAPI` es un framework web moderno y rápido para construir APIs con **Python 3.7+** basado en las **anotaciones** de tipos de Python. `Uvicorn` es un servidor ASGI ligero y rápido que se utiliza comúnmente para ejecutar aplicaciones FastAPI.
@@ -16,6 +32,8 @@ Las principales **características** de FastAPI son:
   
 - **Fácil e intuitivo**, con una curva de aprendizaje suave.
 
+[subir](#contenido)
+
 ## 🛠️ Requisitos previos
 
 Antes de comenzar, asegúrate de tener **Python 3.7 o superior** instalado en tu sistema. También es recomendable crear un entorno virtual para tu proyecto.
@@ -27,6 +45,8 @@ python -m venv env
 source env/bin/activate  # En Windows usa `env\Scripts\activate`
 ```
 
+[subir](#contenido)
+
 ## 📦 Instalación
 
 Para instalar FastAPI y Uvicorn, puedes usar pip. Ejecuta el siguiente comando en tu terminal:
@@ -35,19 +55,23 @@ Para instalar FastAPI y Uvicorn, puedes usar pip. Ejecuta el siguiente comando e
 pip install "fastapi[all]" uvicorn
 ```
 
+[subir](#contenido)
+
 ## ✅ Verificación de la instalación
 
-Para verificar que FastAPI y Uvicorn se han instalado correctamente, puedes crear un archivo Python simple llamado `main.py` con el siguiente contenido:
+Para verificar que FastAPI y Uvicorn se han instalado correctamente, puedes crear un archivo simple de python llamado `main.py` con el siguiente contenido:
 
 ```python
 from fastapi import FastAPI
+
 app = FastAPI()
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 ```
 
-Luego, ejecuta el servidor Uvicorn con el siguiente comando:
+Luego, ejecuta el servidor `Uvicorn` con el siguiente comando:
 
 ```bash
 uvicorn main:app --reload # si esta añadido al PATH
@@ -63,15 +87,27 @@ El parámetro `--reload` hace que el servidor se **reinicie automáticamente** c
 
 ## 📚 Documentación automática
 
-Una vez que el servidor esté en funcionamiento, puedes acceder a la documentación automática generada por FastAPI en tu navegador web. Tenemos 2 tipos de documentación automática en `FastAPI`:
+Una vez que el servidor esté en funcionamiento, puedes acceder a la documentación automática generada por FastAPI en tu navegador web. Hay 2 tipos de documentación automática en `FastAPI`:
 
 - Documentación con **Swagger** -> http://127.0.0.1:8000/docs
-  
+
+![Imagen 1](img/img2.png)
+
+![Imagen 2](img/img3.png)
+
 - Documentación con **Redocly** -> http://127.0.0.1:8000/redoc
+
+![Imagen 3](img/img4.png)
+
+![Imagen 4](img/img5.png)
+
+[subir](#contenido)
 
 ## 🧪 Probar la API
 
 Puedes probar la API utilizando herramientas como **Postman**, **Thunder Client** (extensión de VSCode) o incluso desde la propia documentación interactiva de Swagger.
+
+[subir](#contenido)
 
 ## 🔐 Autenticación y Autorización
 
@@ -83,6 +119,8 @@ Para instalar los paquetes para poder usar la autenticación JWT podemos instala
 pip install pyjwt
 pip install "passlib[bcrypt]"
 ```
+
+[subir](#contenido)
 
 **Bcrypt** es un algoritmo de hashing seguro que se utiliza comúnmente para proteger contraseñas. La biblioteca `passlib` proporciona una implementación fácil de usar de bcrypt y otros algoritmos de hashing.
 
@@ -117,7 +155,7 @@ Para PostgreSQL, puedes usar:
 pip install sqlalchemy psycopg2
 ```
 
-También es recomendable instalar `dotenv` para manejar variables de entorno para la configuración de la base de datos y otras configuraciones sensibles.
+También es recomendable instalar `dotenv` para manejar **variables de entorno** para la configuración de la base de datos y otras configuraciones sensibles.
 
 ```bash
 pip install python-dotenv
@@ -136,9 +174,10 @@ Por ejemplo:
 DATABASE_URL = "mysql+pymysql://user:password@localhost/dbname"
 ```
 
-## Autor
+[subir](#contenido)
 
-- [**José Miguel Escribano Ruiz**](https://github.com/JMER15)
+## 👨‍💻 Autor
 
+- [José Miguel Escribano Ruiz](https://github.com/JMER15)
 
-
+[subir](#contenido)
