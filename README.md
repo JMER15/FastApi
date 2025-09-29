@@ -178,7 +178,7 @@ DATABASE_URL = "mysql+pymysql://user:password@localhost/dbname"
 
 [subir](#contenido)
 
-<h2 id="autor">👤 Autor</h2>
+<h2 id="autor">👨‍💻 Autor</h2>
 
 - [José Miguel Escribano Ruiz](https://github.com/JMER15)
 
